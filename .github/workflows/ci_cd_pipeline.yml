@@ -73,6 +73,6 @@ jobs:
 
       - name: Change git_hash in deployment.yaml
         run: |
-          sed -i "s|<GIT_HASH>|$GIT_HASH|g" deployment.yaml
+          sed -i "s|<GIT_HASH>|$GIT_HASH|g" k8s/deployment.yaml
 
 
