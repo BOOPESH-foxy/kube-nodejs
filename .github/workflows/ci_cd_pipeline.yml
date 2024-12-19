@@ -71,6 +71,8 @@ jobs:
           sed -i "s|<GIT_HASH>|${{ env.GIT_HASH }}|g" k8s/deployment.yaml
 
       - name: Commit and push the updated deployment.yaml
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git add k8s/deployment.yaml
           git commit -m "Update deployment.yaml with Git hash ${GITHUB_SHA}"
