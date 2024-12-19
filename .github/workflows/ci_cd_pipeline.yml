@@ -67,11 +67,12 @@ jobs:
           git config user.email "actions@github.com
 
       - name: update yaml with git hash
-          run: | 
-            GIT_HASH=$(git rev-parse --short HEAD)
+        run: |
+          GIT_HASH=$(git rev-parse --short HEAD)
+          echo "GIT_HASH=$GIT_HASH" >> $GITHUB_ENV
 
-      - name: change git_hash in deployment.yaml
-          run:
-            sed -i "s|<GIT_HASH>|${{ env.GIT_HASH }}|g" deployment.yaml
+      - name: Change git_hash in deployment.yaml
+        run: |
+          sed -i "s|<GIT_HASH>|$GIT_HASH|g" deployment.yaml
 
 
