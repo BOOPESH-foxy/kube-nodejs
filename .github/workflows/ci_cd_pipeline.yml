@@ -64,7 +64,7 @@ jobs:
       - name: Setup Git Config
         run: |
           git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com
+          git config user.email "boopesh.mc@gmail.com"
 
       - name: update yaml with git hash
         run: |
