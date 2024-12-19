@@ -17,3 +17,6 @@ spec:
         image: 989407/node-app:<GIT_HASH>
         ports:
         - containerPort: 3000
+
+
+
