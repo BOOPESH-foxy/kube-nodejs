@@ -40,13 +40,11 @@ jobs:
 
       - name: Generate Git Hash for versioning
         id: git-hash
-        run: |
-          GIT_HASH=$(git rev-parse --short HEAD)
-          echo "GIT_HASH=$GIT_HASH" >> $GITHUB_ENV
+        run: echo "::set-output name=GIT_HASH::$(git rev-parse --short HEAD)"
 
       - name: Build Docker image with Git hash as version
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/node-app:${{ env.GIT_HASH }} .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/node-app:${{ steps.git-hash.outputs.GIT_HASH }} .
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
@@ -56,9 +54,9 @@ jobs:
 
       - name: Push Docker image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/node-app:${{ env.GIT_HASH }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/node-app:${{ steps.git-hash.outputs.GIT_HASH }}
 
       - name: Tag and push "latest" version
         run: |
-          docker tag ${{ secrets.DOCKER_USERNAME }}/node-app:${{ env.GIT_HASH }} ${{ secrets.DOCKER_USERNAME }}/node-app:latest
+          docker tag ${{ secrets.DOCKER_USERNAME }}/node-app:${{ steps.git-hash.outputs.GIT_HASH }} ${{ secrets.DOCKER_USERNAME }}/node-app:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/node-app:latest
