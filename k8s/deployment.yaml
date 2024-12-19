@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: ${{ secrets.DOCKER_USERNAME }}/node-app:latest
+        image: 989407/node-app:latest
         ports:
         - containerPort: 3000
 # ${{ secrets.DOCKER_USERNAME }}
