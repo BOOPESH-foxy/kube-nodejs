@@ -43,6 +43,35 @@ docker run -p 3000:3000 node-app
 ```
 The application will be running at http://localhost:3000 inside the Docker container.
 
+## CI/CD - Github Actions / workflows
+Whenever changes are pushed to the `main` branch or a `pull request` is made, the following steps are automatically triggered:
+
+1. **Test Stage**:
+   - The pipeline runs unit tests to ensure that the application is functioning correctly.
+   - If any tests fail, the pipeline stops, and the changes are not deployed.
+
+2. **Build Stage**:
+   - The application is built into a Docker image. The image is tagged with a version number (e.g., `1.0.0`, `1.1.0`, etc.) to ensure versioning     
+     consistency.
+   - The Docker image is pushed to Docker Hub using the credentials stored in the GitHub Secrets (`DOCKER_USERNAME` and `DOCKER_PASSWORD`).
+
+3. **Deploy Stage**:
+   - Once the image is pushed to Docker Hub, the application is deployed to the Kubernetes cluster.
+   - Kubernetes Deployment and Service configurations are applied, ensuring that the application is always running with the latest Docker image.
+
+4. **Notifications**:
+   - After each deployment, the pipeline sends notifications to inform the team about whether the deployment was successful or if any errors occurred.
+
+
+For the CI/CD pipeline to work correctly, 
+the following secrets need to be configured in your GitHub repository:
+
+DOCKER_USERNAME: Your Docker Hub username.
+DOCKER_PASSWORD: Your Docker Hub password.
+# Monitor the Pipeline
+You can monitor the progress of the pipeline by navigating to the Actions tab in your GitHub repository. Here, you can see the status of each job and whether any errors occurred during the execution of the pipeline.
+
+
 ## Kube setup
 To deploy the application on Kubernetes, you need to have a running Kubernetes cluster.
 
