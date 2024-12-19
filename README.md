@@ -1,3 +1,27 @@
+# Node.js Application
+
+## Description
+
+This is a simple Node.js application. It is containerized using Docker and deployed on Kubernetes with continuous integration and delivery (CI/CD) setup through GitHub Actions and followed up by ArgoCD
+
+## Prerequisites
+
+To run this project locally, make sure you have the following tools installed:
+
+- [Node.js](https://nodejs.org/) (version 16 or higher)
+- [Docker](https://www.docker.com/get-started) (for containerizing the app)
+- [Kubernetes](https://kubernetes.io/docs/setup/) (for deploying to a Kubernetes cluster, optional)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) (to manage Kubernetes resources)
+
+## Cloning the Repository
+
+To get started, clone the repository to your local machine:
+
+```bash
+git clone https://github.com/BOOPESH-foxy/kube-nodejs.git
+cd kube-nodejs
+
+
 # Installing ArgoCD
 1. We will start with launching minikube cluster.
 ```bash
