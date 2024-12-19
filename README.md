@@ -20,9 +20,40 @@ To get started, clone the repository to your local machine:
 ```bash
 git clone https://github.com/BOOPESH-foxy/kube-nodejs.git
 cd kube-nodejs
+```
+Install the necessary Node.js dependencies by running the following command:
+```bash
+npm install
+```
+Once dependencies are installed, start the Node.js application locally:
+```bash
+npm start
+```
+The application will be running at http://localhost:3000.
+## Docker setup
+If you want to run the application inside a Docker container, you can build and run the Docker image:
 
+Build the Docker Image:
+```bash
+docker build -t node-app .
+```
+Run the Docker Container:
+```bash
+docker run -p 3000:3000 node-app
+```
+The application will be running at http://localhost:3000 inside the Docker container.
 
-# Installing ArgoCD
+## Kube setup
+To deploy the application on Kubernetes, you need to have a running Kubernetes cluster.
+
+Deploy the Application: Create the necessary Kubernetes deployment and service using the following command:
+```bash
+kubectl apply -f k8s/
+```
+This will apply the deployment.yaml and service.yaml files from the k8s/ directory.
+Access the Application: Once the deployment is successful, you can access the application based on your cluster's configuration.
+
+## Installing ArgoCD
 1. We will start with launching minikube cluster.
 ```bash
 minikube start --driver=docker
