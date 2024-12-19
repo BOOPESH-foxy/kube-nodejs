@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { app, server } = require('../app'); // Import the app and server
+const { app, server } = require('../app'); 
 
 describe('GET /', () => {
   it('should return a welcome message', async () => {
@@ -9,6 +9,6 @@ describe('GET /', () => {
   });
 
   afterAll((done) => {
-    server.close(done); // Ensure the server closes after the tests
+    server.close(done);
   });
 });
