@@ -70,12 +70,16 @@ jobs:
         run: |
           sed -i "s|<GIT_HASH>|${{ env.GIT_HASH }}|g" k8s/deployment.yaml
 
-      - name: Commit and Push Changes
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+      - name: Setup Git Config
         run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add k8s/deployment.yaml
-          git commit -m "Update deployment.yaml with Git hash"
-          git push https://$GH_PAT@github.com/BOOPESH-foxy/kube-nodejs.git
+          git config user.name "BOOPESH-foxy"
+          git config user.email "boopesh.mc@gmail.com"
+        
+      - name: Push updated deployment.yaml to GitHub
+        env:
+            PAT: ${{ secrets.GH_PAT }}
+        run: |
+            git remote set-url origin https://BOOPESH-foxy:${GH_PAT}@github.com/BOOPESH-foxy/kube-nodejs.git
+            git add k8s/deployment.yaml
+            git commit -m "Update deployment.yaml with Git hash"
+            git push origin main
