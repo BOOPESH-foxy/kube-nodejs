@@ -76,4 +76,5 @@ jobs:
         run: |
           git add k8s/deployment.yaml
           git commit -m "Update deployment.yaml with Git hash ${GITHUB_SHA}"
-          git push
+          git push https://$GH_PAT@github.com/BOOPESH-foxy/kube-nodejs.git
+
