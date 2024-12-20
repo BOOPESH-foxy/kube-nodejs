@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+  namespace: dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-app
+        image: 989407/node-app:13c58bd
+        ports:
+        - containerPort: 3000
+
+
+
+#add nodeport if necessary so that the kube can use it if the container port is skipped //
