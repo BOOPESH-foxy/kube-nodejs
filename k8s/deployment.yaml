@@ -21,3 +21,4 @@ spec:
 
 
 
+#add nodeport if necessary so that the kube can use it if the container port is skipped //
