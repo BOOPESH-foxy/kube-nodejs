@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: node-app
-        image: 989407/node-app:<GIT_HASH>
+        image: 989407/node-app:61f0318
         ports:
         - containerPort: 3000
 
