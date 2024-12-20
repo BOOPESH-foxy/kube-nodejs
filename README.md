@@ -112,3 +112,6 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 ```
 4. the default login username is ```admin``` with the password we took above
+5. Once logged in configure your repo link and namespaces that you created on kube
+6. After that apply the configuration and you'll see an app created and check for the sync and status.
+   
