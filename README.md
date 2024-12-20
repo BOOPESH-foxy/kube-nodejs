@@ -114,4 +114,4 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 4. the default login username is ```admin``` with the password we took above
 5. Once logged in configure your repo link and namespaces that you created on kube
 6. After that apply the configuration and you'll see an app created and check for the sync and status.
-   
+   ![ARGO-CD OUTPUT](https://github.com/BOOPESH-foxy/kube-nodejs/blob/main/Screenshot%20from%202024-12-20%2012-43-56.png)
