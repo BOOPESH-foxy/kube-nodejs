@@ -72,10 +72,9 @@ jobs:
         
       - name: Push updated deployment.yaml to GitHub
         env:
-            PAT: ${{ secrets.GH_PAT }}
+          PAT: ${{ secrets.GH_PAT }}
         run: |
-          git remote set-url origin https://BOOPESH-foxy:${GH_PAT}@github.com/BOOPESH-foxy/kube-nodejs.git
+          git remote set-url origin https://BOOPESH-foxy:$PAT@github.com/BOOPESH-foxy/kube-nodejs.git
           git add k8s/deployment.yaml
           git commit -m "Update deployment.yaml with Git hash"
           git push origin main
-##
